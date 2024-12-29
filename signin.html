@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <!-- style -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- icons -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+          rel="stylesheet" />
+
+</head>
+<body>
+<div class="container">
+    <header>Sign In</header>
+    <form action="#">
+
+        <!-- email -->
+        <div class="field email-field">
+            <div class="input-field">
+                <input type="email" placeholder="Enter your email" class="email" />
+            </div>
+            <span class="error email-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    <p class="error-text">Please enter a valid email</p>
+                </span>
+        </div>
+
+        <!-- password -->
+        <div class="field enter-password">
+
+            <div class="input-field">
+                <input type="password"
+                       placeholder="Write your password"
+                       class="password" />
+                <i class="bx bx-hide show-hide"></i>
+            </div>
+
+            <span class="error password-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    <p class="error-text">
+                        Wrong password
+                    </p>
+                </span>
+        </div>
+
+        <!-- submit button -->
+        <div class="input-field button">
+            <input type="submit" value="Sign in" />
+        </div>
+
+        <!-- if account exists -->
+        <div class="ifHaveAccount">
+            <br /><p>Don't have an account? <a href="signup.html">Login</a></p>
+        </div>
+
+    </form>
+</div>
+<!-- JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>

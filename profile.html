@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+
+  <!-- style -->
+  <link rel="stylesheet" href="stylemain.css" />
+
+  <!-- icons -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+        rel="stylesheet" />
+</head>
+<body>
+<!-- Navigation Bar -->
+<div class="topnav">
+  <div class="logo">
+    <img src="\food\logo.png" alt="Cook Book.">
+  </div>
+  <div>
+    <a href="home.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="aboutus.html">About us</a>
+  </div>
+</div>
+
+<div class="containerProfile">
+  <div class="profile-details">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" value="John" readonly>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" value="Doe" readonly>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" value="john.doe@example.com" readonly>
+
+    <label for="role">Role:</label>
+    <input type="text" id="role" value="Editor" readonly>
+  </div>
+
+  <div class="recipe-section">
+    <h2>My Recipes</h2>
+    <div id="recipes-container">
+      <!-- Recipe cards will be inserted here -->
+    </div>
+    <button class="add-recipe-btn" onclick="openModal()">Add Recipe</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p><a href="privacypolicy.html">Privacy Policy</a> | <a href="useragreement.html">User Agreement</a></p>
+</div>
+
+<!-- Modal -->
+<div id="recipeModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <iframe src="createrecipe.html" id="recipeFrame"></iframe>
+    <button type="submit" class="button" onclick="saveRecipe()">Save Recipe</button>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
