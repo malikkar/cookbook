@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,8 +10,7 @@
     <link rel="stylesheet" href="stylemain.css" />
 
     <!-- icons -->
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-          rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Navigation Bar -->
@@ -30,42 +28,41 @@
 <!-- title -->
 <div class="content">
     <h1>Recipe book</h1>
-    <p style="font-size: 24px" ;>Find and save recipes from all over the world.</p>
+    <p class="intro-text">Find and save recipes from all over the world.</p>
 </div>
 
 <!-- Search Bar -->
-<div class="search">
-    <input type="text" class="search-input" placeholder="Search...">
-    <button class="search-button">
-        <i class='bx bx-search'></i>
-    </button>
+<div class="search-section">
+    <h2>Search Recipes</h2>
+    <input type="text" id="searchQuery" placeholder="Search for recipes...">
+    <button onclick="searchRecipes()">Search</button>
+    <div id="searchResults"></div>
 </div>
 
 <!-- PAGE CONTENT -->
-<div class="content" style="max-width:1200px; margin-top:50px">
-
-    <p style="font-size: 24px" ;>All recipes:</p>
+<div class="content content-main">
+    <p class="intro-text">All recipes:</p>
 
     <!-- First Photo Grid-->
     <div class="grid" id="food">
         <div class="recipe">
-            <img src="\food\sandwich.jpg" alt="Sandwich" style="width:100%">
+            <img src="\food\sandwich.jpg" alt="Sandwich">
             <h3>The Perfect Sandwich</h3>
             <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
         <div class="recipe">
-            <img src="\food\steak.jpg" alt="Steak" style="width: 100% ">
+            <img src="\food\steak.jpg" alt="Steak">
             <h3>The Steak</h3>
             <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
         <div class="recipe">
-            <img src="\food\cherries.jpg" alt="Cherries" style="width: 100% ">
+            <img src="\food\cherries.jpg" alt="Cherries">
             <h3>Cherries, interrupted</h3>
             <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             <p>What else?</p>
         </div>
         <div class="recipe">
-            <img src="\food\wine.jpg" alt="Pasta and Wine" style="width: 100% ">
+            <img src="\food\wine.jpg" alt="Pasta and Wine">
             <h3>Robust Wine and Vegetable Pasta</h3>
             <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
@@ -74,22 +71,22 @@
     <!-- Second Photo Grid-->
     <div class="grid">
         <div class="recipe">
-            <img src="\food\popsicle.jpg" alt="Popsicle" style="width: 100% ">
+            <img src="\food\popsicle.jpg" alt="Popsicle">
             <h3>All I Need Is a Popsicle</h3>
             <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
         <div class="recipe">
-            <img src="\food\salmon.jpg" alt="Salmon" style="width: 100% ">
+            <img src="\food\salmon.jpg" alt="Salmon">
             <h3>Salmon For Your Skin</h3>
             <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
         <div class="recipe">
-            <img src="\food\sandwich.jpg" alt="Sandwich" style="width: 100% ">
+            <img src="\food\sandwich.jpg" alt="Sandwich">
             <h3>The Perfect Sandwich</h3>
             <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
         <div class="recipe">
-            <img src="\food\croissant.jpg" alt="Croissant" style="width: 100% ">
+            <img src="\food\croissant.jpg" alt="Croissant">
             <h3>Le French</h3>
             <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>

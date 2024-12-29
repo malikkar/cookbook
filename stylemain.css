@@ -421,3 +421,22 @@ textarea[name="description"] {
     max-width: 600px; /* Максимальная ширина */
     box-sizing: border-box; /* Включаем padding и border в общую ширину */
 }
+
+/* home style*/
+.intro-text {
+    font-size: 24px;
+}
+
+.content-main {
+    max-width: 1200px;
+    margin-top: 50px;
+}
+
+/* create recipe style*/
+.ingredient-input {
+    margin-bottom: 10px;
+}
+
+.step-textarea {
+    margin-bottom: 10px;
+}

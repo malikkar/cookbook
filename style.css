@@ -128,3 +128,53 @@ form .input-field {
     align-content: center;
 }
 
+@media print {
+    /* Hide navigation bar */
+    .topnav {
+        display: none;
+    }
+
+    /* Hide footer */
+    .footer {
+        display: none;
+    }
+
+    /* Adjust content area for print */
+    .content {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ensure all form fields are visible */
+    input, textarea {
+        border: 1px solid #000;
+        padding: 5px;
+    }
+
+    /* Remove background colors */
+    body, .container, .content {
+        background: #fff;
+        color: #000;
+    }
+
+    /* Adjust font sizes for print */
+    body {
+        font-size: 12pt;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #000;
+    }
+
+    /* Ensure images are displayed correctly */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Remove unnecessary elements */
+    .button, .error-message {
+        display: none;
+    }
+}

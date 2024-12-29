@@ -208,72 +208,114 @@ function closeModal() {
   document.getElementById('recipeModal').style.display = 'none';
 }
 
-
-console.log("script.js loaded");
 document.addEventListener('DOMContentLoaded', function () {
-  const recipeFrame = document.getElementById('recipeFrame');
-  if (recipeFrame) {
-    recipeFrame.addEventListener('load', function () {
-      console.log("iframe loaded");
+  const recipeForm = document.getElementById('recipeForm');
+  recipeForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(recipeForm);
+
+    fetch('submit_recipe.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Recipe submitted successfully!');
+      } else {
+        alert('Failed to submit recipe.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while submitting the recipe.');
     });
-  }
-  console.log("script.js loaded");
-
-  function validateForm() {
-    const iframe = document.getElementById('recipeFrame');
-    if (!iframe) return false;
-
-    try {
-      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-      const inputs = iframeDocument.querySelectorAll('input[required], textarea[required]');
-      let isValid = true;
-
-      inputs.forEach(input => {
-        const errorMessage = iframeDocument.getElementById(`${input.id}-error`);
-        if (!input.value.trim()) {
-          if (errorMessage) {
-            errorMessage.textContent = 'This field is required.';
-          }
-          isValid = false;
-        } else {
-          if (errorMessage) {
-            errorMessage.textContent = '';
-          }
-        }
-      });
-
-      return isValid;
-    } catch (e) {
-      console.error("Cross-origin access error:", e);
-      return false;
-    }
-  }
-
-  function saveRecipe() {
-    console.log("saveRecipe called");
-    if (validateForm()) {
-      closeModal();
-      alert('Recipe saved successfully!');
-    } else {
-      alert('Please fill in all required fields.');
-    }
-  }
-
-  function closeModal() {
-    const modal = document.getElementById('recipeModal');
-    if (modal) {
-      modal.style.display = 'none';
-    }
-  }
-
-  const saveButton = document.getElementById('saveButton');
-  if (saveButton) {
-    saveButton.addEventListener('click', saveRecipe);
-  }
+  });
 });
 
+function addIngredient() {
+  const div = document.getElementById('ingredients');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = 'ingredient[]';
+  input.placeholder = 'Ingredient';
+  input.className = 'ingredient-input';
+  input.required = true;
+
+  div.appendChild(input);
+}
+
+function addStep() {
+  const stepsContainer = document.getElementById('recipesteps');
+  const newStep = document.createElement('textarea');
+  newStep.name = 'steps[]';
+  newStep.rows = 4;
+  newStep.required = true;
+  newStep.placeholder = 'Step';
+  newStep.className = 'step-textarea';
+
+  stepsContainer.appendChild(newStep);
+}
+
+/* seacrhbar */
+function searchRecipes() {
+  const query = document.getElementById('searchQuery').value;
+
+  fetch(`search_recipes.php?query=${encodeURIComponent(query)}`)
+    .then(response => response.json())
+    .then(data => {
+      const resultsContainer = document.getElementById('searchResults');
+      resultsContainer.innerHTML = '';
+
+      if (data.length > 0) {
+        data.forEach(recipe => {
+          const recipeCard = document.createElement('div');
+          recipeCard.className = 'recipe-card';
+          recipeCard.innerHTML = `
+            <h3>${recipe.name}</h3>
+            <p>${recipe.description}</p>
+          `;
+          resultsContainer.appendChild(recipeCard);
+        });
+      } else {
+        resultsContainer.innerHTML = '<p>No recipes found.</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while searching for recipes.');
+    });
+}
 
 
+/* registration form */
+document.addEventListener('DOMContentLoaded', function () {
+  const signinForm = document.getElementById('signinForm');
+  signinForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
 
+    const formData = new FormData(signinForm);
+
+    // Нужно добавить 'signin.php'
+    fetch('signin.php', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Sign in successful!');
+          // Redirect to another page or update the UI as needed
+        } else {
+          alert('Failed to sign in.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during sign in.');
+      });
+  });
+});
 
 

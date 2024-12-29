@@ -21,22 +21,18 @@
     <textarea id="description" name="description" rows="4" required></textarea><br>
     <span class="error-message" id="description-error"></span><br>
 
-    <label for="ingridients">Ingridients:</label>
-
+    <label for="ingredient">Ingredients:</label>
     <div id="ingredients">
-      <input type="text" id="ingredient" name="ingredient[]" placeholder="Ingridient" style="margin-bottom: 10px;" required>
+      <input type="text" id="ingredient" name="ingredient[]" placeholder="Ingredient" class="ingredient-input" required>
       <span class="error-message" id="ingredient-error"></span>
     </div>
+    <button type="button" class="button" onclick="addIngredient()">Add Ingredient</button><br><br>
 
-    <button type="button" class="button" onclick="addIngredient()">Add Ingridient</button><br><br>
-
-    <label for="recipesteps">Recipe steps:</label><br />
-
+    <label for="steps">Recipe steps:</label><br />
     <div id="recipesteps">
-      <textarea id="steps" name="steps[]" rows="4" placeholder="Step" style="margin-bottom: 10px;" required></textarea>
+      <textarea id="steps" name="steps[]" rows="4" placeholder="Step" class="step-textarea" required></textarea>
       <span class="error-message" id="steps-error"></span>
     </div>
-
     <button type="button" class="button" onclick="addStep()">Add Step</button><br><br>
 
     <label for="mainphoto">Main photo:</label><br><br>
@@ -45,50 +41,10 @@
     <label for="addphoto">Additional photos:</label><br><br>
     <input type="file" id="addphoto" name="addphoto" multiple><br><br>
 
+    <button type="submit" class="button">Submit Recipe</button>
   </form>
 </div>
 
-<script>
-  function addIngredient() {
-    const div = document.getElementById('ingredients');
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.name = 'ingredient[]';
-    input.placeholder = 'Ingridient';
-    input.style.marginBottom = '10px';
-    input.required = true;
-
-    // Проверяем количество текущих ингредиентов
-    const ingredientCount = div.getElementsByTagName('input').length;
-    if ((ingredientCount + 1) % 5 !== 1) {
-      input.style.marginLeft = '10px'; // Добавляем отступ слева
-    }
-
-    div.appendChild(input);
-  }
-
-  function addStep() {
-    // Find the container for recipe steps
-    const stepsContainer = document.getElementById('recipesteps');
-
-    // Create a new textarea element
-    const newStep = document.createElement('textarea');
-    newStep.name = 'steps[]';
-    newStep.rows = 4;
-    newStep.required = true;
-    newStep.placeholder = 'Step';
-    newStep.style.marginBottom = '10px';
-
-    // Проверяем количество текущих шагов
-    const stepCount = stepsContainer.getElementsByTagName('textarea').length;
-    if ((stepCount + 1) % 5 !== 1) {
-      newStep.style.marginLeft = '10px'; // Добавляем отступ слева
-    }
-
-    // Append the new textarea to the container
-    stepsContainer.appendChild(newStep);
-  }
-</script>
 <script src="script.js"></script>
 </body>
 </html>
