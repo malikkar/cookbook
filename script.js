@@ -1,3 +1,5 @@
+// Sign in form validation
+
 const form = document.querySelector("form"),
   nameField = form.querySelector(".name-field"),
   nameInput = nameField.querySelector(".name"),
@@ -9,34 +11,34 @@ const form = document.querySelector("form"),
   passInput = passField.querySelector(".password"),
   cPassField = form.querySelector(".confirm-password"),
   cPassInput = cPassField.querySelector(".cPassword"),
-ePassField = form.querySelector(".enter-password"),
-  ePassInput = pswdField.querySelector(".ePassword")
+  ePassField = form.querySelector(".enter-password"),
+  ePassInput = ePassField.querySelector(".ePassword");
 
 // Name Validation
 function checkName() {
   const namePattern = /^[a-zA-Z]+$/; // Regex to allow only letters
   if (!nameInput.value.match(namePattern)) {
-    return nameField.classList.add("invalid"); //adding invalid class if name value do not mathced with name pattern
+    return nameField.classList.add("invalid"); // adding invalid class if name value does not match name pattern
   }
-  nameField.classList / remove("invalid"); //removing invalid class if name value matched with namePattern
+  nameField.classList.remove("invalid"); // removing invalid class if name value matches namePattern
 }
 
 // Surname Validation
 function checkSurname() {
   const namePattern = /^[a-zA-Z]+$/; // Regex to allow only letters
   if (!surnameInput.value.match(namePattern)) {
-    return surnameField.classList.add("invalid"); //adding invalid class if surname value do not mathced with name pattern
+    return surnameField.classList.add("invalid"); // adding invalid class if surname value does not match name pattern
   }
-  surnameField.classList / remove("invalid"); //removing invalid class if surname value matched with namePattern
+  surnameField.classList.remove("invalid"); // removing invalid class if surname value matches namePattern
 }
 
 // Email Validation
 function checkEmail() {
   const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   if (!emailInput.value.match(emailPattern)) {
-    return emailField.classList.add("invalid"); //adding invalid class if email value do not mathced with email pattern
+    return emailField.classList.add("invalid"); // adding invalid class if email value does not match email pattern
   }
-  emailField.classList.remove("invalid"); //removing invalid class if email value matched with emailPattern
+  emailField.classList.remove("invalid"); // removing invalid class if email value matches emailPattern
 }
 
 // Hide and show password
@@ -44,7 +46,7 @@ const eyeIcons = document.querySelectorAll(".show-hide");
 
 eyeIcons.forEach((eyeIcon) => {
   eyeIcon.addEventListener("click", () => {
-    const pInput = eyeIcon.parentElement.querySelector("input"); //getting parent element of eye icon and selecting the password input
+    const pInput = eyeIcon.parentElement.querySelector("input"); // getting parent element of eye icon and selecting the password input
     if (pInput.type === "password") {
       eyeIcon.classList.replace("bx-hide", "bx-show");
       return (pInput.type = "text");
@@ -60,12 +62,12 @@ function createPass() {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   if (!passInput.value.match(passPattern)) {
-    return passField.classList.add("invalid"); //adding invalid class if password input value do not match with passPattern
+    return passField.classList.add("invalid"); // adding invalid class if password input value does not match passPattern
   }
-  passField.classList.remove("invalid"); //removing invalid class if password input value matched with passPattern
+  passField.classList.remove("invalid"); // removing invalid class if password input value matches passPattern
 }
 
-// Confirm Password Validtion
+// Confirm Password Validation
 function confirmPass() {
   if (passInput.value !== cPassInput.value || cPassInput.value === "") {
     return cPassField.classList.add("invalid");
@@ -81,34 +83,35 @@ function isRightPass() {
   ePassField.classList.remove("invalid");
 }
 
-
-// Calling Funtion on Form Sumbit
+// Calling Function on Form Submit
 form.addEventListener("submit", (e) => {
-  e.preventDefault(); //preventing form submitting
-  checkName()
-  checkSurname()
+  e.preventDefault(); // preventing form submitting
+  checkName();
+  checkSurname();
   checkEmail();
   createPass();
   confirmPass();
+  isRightPass();
 
-  //calling function on key up
+  // calling function on key up
   nameInput.addEventListener("keyup", checkName);
   surnameInput.addEventListener("keyup", checkSurname);
   emailInput.addEventListener("keyup", checkEmail);
   passInput.addEventListener("keyup", createPass);
   cPassInput.addEventListener("keyup", confirmPass);
+  ePassInput.addEventListener("keyup", isRightPass);
 
   if (
     !nameField.classList.contains("invalid") &&
     !surnameField.classList.contains("invalid") &&
     !emailField.classList.contains("invalid") &&
     !passField.classList.contains("invalid") &&
-    !cPassField.classList.contains("invalid")
+    !cPassField.classList.contains("invalid") &&
+    !ePassField.classList.contains("invalid")
   ) {
     location.href = form.getAttribute("action");
   }
 });
-
 // Sample data for demonstration purposes
 const recipes = [
   { id: 1, name: 'Spaghetti Carbonara', photo: 'https://via.placeholder.com/100' },
@@ -200,13 +203,6 @@ function saveRecipe() {
   closeModal();
 }
 
-function openModal() {
-  document.getElementById('recipeModal').style.display = 'block';
-}
-
-function closeModal() {
-  document.getElementById('recipeModal').style.display = 'none';
-}
 
 document.addEventListener('DOMContentLoaded', function () {
   const recipeForm = document.getElementById('recipeForm');
